@@ -3,7 +3,8 @@ should = require 'should'
 {StateVisualizer} = require '../lib/state_visualizer'
 
 describe "StateVisualizer", ->
-  subject = new StateVisualizer
+  beforeEach () ->
+    @subject = new StateVisualizer
 
   it "prints the state in ASCII", ->
     state = [
@@ -20,4 +21,4 @@ describe "StateVisualizer", ->
                    - - - O -
                    - - - - O
                 """
-    should(subject.format(state)).be.equal(formatted)
+    should(@subject.format(state)).be.equal(formatted)
