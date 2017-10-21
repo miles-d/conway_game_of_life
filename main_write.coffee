@@ -14,10 +14,10 @@ visualizer = new StateVisualizer
 counter = 0
 for _ in [0..number_of_generations]
   formatted_state = visualizer.format(game.state)
-  game.tick()
-  counter += 1
   filename = '' + counter
   while filename.length < 3
     filename = '0' + filename
   filename += '.txt'
   fs.writeFileSync("out/#{filename}", formatted_state)
+  game.tick()
+  counter += 1
