@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Creating text files..."
+./run_write
+
+(
+cd out
+
+echo "Converting files to jpg..."
+find . -type f -name '*.txt' | xargs soffice --convert-to jpg &> /dev/null
+
+echo "Cropping files..."
+for f in *.jpg; do convert "$f" -crop 530x490+50+60 crop_$f; done
+
+echo "Generating gif..."
+convert -delay 30 -loop 0 crop_*.jpg conway.gif
+
+echo "Cleaning up..."
+rm *.txt *.jpg
+
+echo "Done! Look at out/conway.gif."
+)
