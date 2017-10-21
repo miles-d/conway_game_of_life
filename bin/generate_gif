@@ -3,7 +3,7 @@
 set -e
 
 echo "Creating text files..."
-./run_write
+./bin/run_write
 
 (
 cd out
