@@ -10,7 +10,7 @@ describe "Cell", ->
   beforeEach () ->
     FakeWorld = td.constructor(World)
     @world = new FakeWorld
-    @cell = new Cell(@world)
+    @cell = new Cell(@world, 0, 0)
 
   it "dies if it has fewer than 2 neighbours, like 0", ->
     td.when(@world.count_neighbours(@cell)).thenReturn(0)

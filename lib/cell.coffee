@@ -1,5 +1,5 @@
 class Cell
-  constructor: (@world) ->
+  constructor: (@world, @x, @y) ->
 
   is_alive: ->
     neighbours_count = @world.count_neighbours(this)
